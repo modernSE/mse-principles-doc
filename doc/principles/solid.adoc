@@ -7,6 +7,10 @@
 === Change
 
 [%notitle]
+=== Design Priciples
+
+image::WordCloudPrinciples.png[size=cover, background]
+[%notitle]
 === Single Responsibility Principle
 
 image::SingleResponsibilityPrinciple.jpg[size=cover, background]
