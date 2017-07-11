@@ -31,6 +31,9 @@ Modules should be open for extension but closed for modification
 
 image::LiskovSubstitutionPrinciple.jpg[size=cover, background]
 
+=== Liskov Substitution Principle
+An object of type T may be substituted with any object of a subtype S
+
 [%notitle]
 === Interface Segregation Principle
 
