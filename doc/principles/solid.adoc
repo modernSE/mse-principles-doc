@@ -2,15 +2,22 @@
 
 == The SOLID Principles
 
+=== The one constant in Software Development is
+
+=== Change
+
 [%notitle]
 === Single Responsibility Principle
 
 image::SingleResponsibilityPrinciple.jpg[size=cover, background]
 
 [%notitle]
-=== Open Closed Principle
+=== Open-Closed Principle
 
 image::OpenClosedPrinciple.jpg[size=cover, background]
+
+=== Open-Closed Principle
+Modules should be open for extension but closed for modification
 
 [%notitle]
 === Liskov Substitution Principle
