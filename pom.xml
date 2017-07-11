@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.cas.mse</groupId>
+	<artifactId>mse-principles-doc</artifactId>
+	<version>1.0.0</version>
+
+	<properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	
+    	<project.slides.directory>${project.build.directory}/generated-slides</project.slides.directory>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<revealjs.version>3.1.0</revealjs.version>
+		<asciidoctor-revealjs.version>master</asciidoctor-revealjs.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- NPE at Maven occurs if a site for thid documentation is genereated, should be fixed for Maven 3.2 or higher. -->
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.googlecode.maven-download-plugin</groupId>
+				<artifactId>download-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<id>install-asciidoctor-revealjs</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>https://github.com/asciidoctor/asciidoctor-reveal.js/archive/${asciidoctor-revealjs.version}.zip</url>
+							<unpack>true</unpack>
+							<outputFileName>asciidoctor-reveal.js-${asciidoctor-revealjs.version}.zip</outputFileName>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>install-revealjs</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>https://github.com/hakimel/reveal.js/archive/${revealjs.version}.zip</url>
+							<unpack>true</unpack>
+							<outputFileName>reveal.js-${revealjs.version}.zip</outputFileName>
+							<outputDirectory>${project.slides.directory}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>1.5.5</version>
+	
+				<executions>
+					<execution>
+						<id>doc-slides</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
+
+						<configuration>
+							<sourceDirectory>doc/principles</sourceDirectory>
+							<outputDirectory>${project.slides.directory}</outputDirectory>
+							<backend>revealjs</backend>
+
+							<templateDir>${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates/slim</templateDir>
+							<sourceHighlighter>coderay</sourceHighlighter>
+							<attributes>
+								<revealjsdir>reveal.js-${revealjs.version}</revealjsdir>
+								<revealjs_theme>black</revealjs_theme>
+								<revealjs_transition>linear</revealjs_transition>
+							</attributes>
+						</configuration>
+					</execution>
+				</executions>				
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											com.googlecode.maven-download-plugin
+										</groupId>
+										<artifactId>
+											download-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.2.1,)
+										</versionRange>
+										<goals>
+											<goal>wget</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.asciidoctor
+										</groupId>
+										<artifactId>
+											asciidoctor-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.5.3,)
+										</versionRange>
+										<goals>
+											<goal>
+												process-asciidoc
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

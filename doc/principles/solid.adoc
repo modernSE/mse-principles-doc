@@ -1,0 +1,44 @@
+= Principles of Software Engineering
+
+== The SOLID Principles
+
+[%notitle]
+=== Single Responsibility Principle
+
+image::SingleResponsibilityPrinciple.jpg[size=cover, background]
+
+[%notitle]
+=== Open Closed Principle
+
+image::OpenClosedPrinciple.jpg[size=cover, background]
+
+[%notitle]
+=== Liskov Substitution Principle
+
+image::LiskovSubstitutionPrinciple.jpg[size=cover, background]
+
+[%notitle]
+=== Interface Segregation Principle
+
+image::InterfaceSegregationPrinciple.jpg[size=cover, background]
+
+[%notitle]
+=== Dependency Inversion Principle
+
+image::DependencyInversionPrinciple.jpg[size=cover, background]
+
+== Other Principles
+
+=== KISS
+Keep it simple, stupid!
+
+=== YAGNI
+You ain't gonna need it!
+
+=== DRY
+Don't repeat yourself!
+
+=== UVM
+* Law of Demeter
+* Principle of least surprise
+* ...
