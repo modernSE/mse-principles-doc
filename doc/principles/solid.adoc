@@ -39,6 +39,9 @@ An object of type T may be substituted with any object of a subtype S
 
 image::InterfaceSegregationPrinciple.jpg[size=cover, background]
 
+=== Interface Segregation Principle
+no client should be forced to depend on methods it does not use
+
 [%notitle]
 === Dependency Inversion Principle
 
