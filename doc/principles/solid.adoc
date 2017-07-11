@@ -47,6 +47,9 @@ no client should be forced to depend on methods it does not use
 
 image::DependencyInversionPrinciple.jpg[size=cover, background]
 
+=== Dependency Inversion Principle
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
 == Other Principles
 
 === KISS
